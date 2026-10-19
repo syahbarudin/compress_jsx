@@ -1,10 +1,10 @@
 import { useState } from "react";
-import ImageCompress from "./components/ImageCompress.jsx";
-import PdfCompress from "./components/PdfCompress.jsx";
-import MergePdf from "./components/MergePdf.jsx";
-import WordToPdf from "./components/WordToPdf.jsx";
-import PdfToWord from "./components/PdfToWord.jsx";
-import ImageToPdf from "./components/ImageToPdf.jsx";
+import ImageCompress from "./components/ImageCompress";
+import PdfCompress from "./components/PdfCompress";
+import MergePdf from "./components/MergePdf";
+import WordToPdf from "./components/WordToPdf";
+import PdfToWord from "./components/PdfToWord";
+import ImageToPdf from "./components/ImageToPdf";
 
 const MENU = [
   { id: "gambar", label: "🖼️  Kompres Gambar", Component: ImageCompress },
