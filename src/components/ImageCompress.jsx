@@ -44,7 +44,7 @@ export default function ImageCompress() {
           <Card>
             <label className="flex items-center justify-between text-sm font-medium">
               Tingkat Kualitas Kompresi (Quality)
-              <span className="rounded bg-zinc-800 px-2 py-0.5 text-amber-400">{quality}</span>
+              <span className="rounded bg-zinc-100 px-2 py-0.5 text-red-600">{quality}</span>
             </label>
             <input
               type="range" min={5} max={100} value={quality}
@@ -60,7 +60,7 @@ export default function ImageCompress() {
             <div className="space-y-3">
               <h2 className="text-lg font-semibold">Gambar Asli</h2>
               <Notice>Ukuran: <b>{kb(file.size)} KB</b></Notice>
-              <img src={origUrl} alt="asli" className="w-full rounded-lg border border-zinc-800" />
+              <img src={origUrl} alt="asli" className="w-full rounded-lg border border-zinc-200" />
             </div>
             <div className="space-y-3">
               <h2 className="text-lg font-semibold">Hasil Kompresi</h2>
@@ -69,7 +69,7 @@ export default function ImageCompress() {
                   <Notice tone="success">
                     Ukuran: <b>{kb(result.blob.size)} KB</b> (Hemat <b>{savingsPct(file.size, result.blob.size)}%</b>)
                   </Notice>
-                  <img src={result.url} alt="hasil" className="w-full rounded-lg border border-zinc-800" />
+                  <img src={result.url} alt="hasil" className="w-full rounded-lg border border-zinc-200" />
                   <Button onClick={() => downloadBlob(result.blob, `${baseName(file.name)}_compress.jpg`)}>
                     ⬇️ Unduh Gambar Hasil Kompresi
                   </Button>

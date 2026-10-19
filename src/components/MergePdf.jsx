@@ -92,19 +92,19 @@ export default function MergePdf() {
                     setDragId(null);
                   }}
                   onDragEnd={() => setDragId(null)}
-                  className={`cursor-grab rounded-xl border bg-zinc-900 p-2 transition ${
-                    dragId === it.id ? "border-amber-400 opacity-50" : "border-zinc-800"
+                  className={`cursor-grab rounded-xl border bg-white p-2 transition ${
+                    dragId === it.id ? "border-red-500 opacity-50" : "border-zinc-200"
                   }`}
                 >
-                  <div className="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-lg bg-zinc-800">
+                  <div className="flex aspect-[3/4] items-center justify-center overflow-hidden rounded-lg bg-zinc-100">
                     {it.thumb ? <img src={it.thumb} alt="" className="h-full w-full object-contain" draggable={false} /> : <span className="text-4xl">📄</span>}
                   </div>
                   <p className="mt-2 truncate text-center text-xs font-bold" title={it.file.name}>{it.file.name}</p>
                   <p className="text-center text-[11px] font-bold text-red-500">Urutan #{idx + 1}</p>
                   <div className="mt-1 flex items-center justify-center gap-1">
-                    <button onClick={() => move(idx, idx - 1)} disabled={idx === 0} className="rounded bg-zinc-800 px-2 py-0.5 text-xs hover:bg-zinc-700 disabled:opacity-30">←</button>
-                    <button onClick={() => move(idx, idx + 1)} disabled={idx === items.length - 1} className="rounded bg-zinc-800 px-2 py-0.5 text-xs hover:bg-zinc-700 disabled:opacity-30">→</button>
-                    <button onClick={() => remove(it.id)} className="rounded bg-zinc-800 px-2 py-0.5 text-xs text-red-400 hover:bg-zinc-700">✕</button>
+                    <button onClick={() => move(idx, idx - 1)} disabled={idx === 0} className="rounded bg-zinc-100 px-2 py-0.5 text-xs hover:bg-zinc-200 disabled:opacity-30">←</button>
+                    <button onClick={() => move(idx, idx + 1)} disabled={idx === items.length - 1} className="rounded bg-zinc-100 px-2 py-0.5 text-xs hover:bg-zinc-200 disabled:opacity-30">→</button>
+                    <button onClick={() => remove(it.id)} className="rounded bg-zinc-100 px-2 py-0.5 text-xs text-red-600 hover:bg-zinc-200">✕</button>
                   </div>
                 </div>
               ))}
@@ -131,7 +131,7 @@ export default function MergePdf() {
                 <Button variant="secondary" onClick={doCompress} disabled={!!busy}>🗜️ Kompres Hasil Ini</Button>
                 {compressed && (
                   <div className="space-y-2">
-                    <p className="text-xs text-zinc-400">
+                    <p className="text-xs text-zinc-500">
                       Hemat <b>{savingsPct(merged.length, compressed.length)}%</b> (Ukuran: {kb(compressed.length)} KB)
                     </p>
                     <Button variant="secondary" onClick={() => downloadBlob(new Blob([compressed], { type: "application/pdf" }), `${firstBase}_merge_compress.pdf`)}>

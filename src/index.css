@@ -1,10 +1,124 @@
 @import "tailwindcss";
 
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
-  @apply bg-zinc-950 text-zinc-100 antialiased;
+  @apply bg-white text-zinc-800 antialiased;
   font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.hero-bg {
+  background:
+    radial-gradient(60rem 30rem at 15% -10%, rgb(254 226 226 / 0.7), transparent 60%),
+    radial-gradient(50rem 28rem at 90% 0%, rgb(224 231 255 / 0.7), transparent 60%),
+    #f7f6fb;
+}
+
+:root.dark {
+  color-scheme: dark;
+  --color-zinc-50: #09090b;
+  --color-zinc-100: #18181b;
+  --color-zinc-200: #27272a;
+  --color-zinc-300: #3f3f46;
+  --color-zinc-400: #71717a;
+  --color-zinc-500: #a1a1aa;
+  --color-zinc-600: #d4d4d8;
+  --color-zinc-700: #e4e4e7;
+  --color-zinc-800: #f4f4f5;
+  --color-zinc-900: #fafafa;
+}
+
+.dark body {
+  background-color: #09090b;
+}
+
+.dark .bg-white {
+  background-color: #18181b;
+}
+
+.dark .bg-zinc-900 {
+  background-color: #3f3f46;
+}
+
+.dark .border-zinc-900 {
+  border-color: #3f3f46;
+}
+
+.dark .hero-bg {
+  background:
+    radial-gradient(60rem 30rem at 15% -10%, rgb(127 29 29 / 0.18), transparent 60%),
+    radial-gradient(50rem 28rem at 90% 0%, rgb(49 46 129 / 0.2), transparent 60%),
+    #09090b;
+}
+
+.dark .bg-orange-100,
+.dark .bg-green-100,
+.dark .bg-emerald-100,
+.dark .bg-yellow-100,
+.dark .bg-blue-100,
+.dark .bg-indigo-100 {
+  background-color: #27272a;
+}
+
+.dark .text-orange-600,
+.dark .text-green-600,
+.dark .text-emerald-600,
+.dark .text-yellow-600,
+.dark .text-blue-600,
+.dark .text-indigo-600 {
+  color: #a1a1aa;
+}
+
+.dark .bg-sky-50 {
+  background-color: rgb(14 116 144 / 0.2);
+}
+
+.dark .border-sky-200 {
+  border-color: #155e75;
+}
+
+.dark .text-sky-800 {
+  color: #bae6fd;
+}
+
+.dark .bg-emerald-50 {
+  background-color: rgb(5 150 105 / 0.18);
+}
+
+.dark .border-emerald-200 {
+  border-color: #065f46;
+}
+
+.dark .text-emerald-800 {
+  color: #a7f3d0;
+}
+
+.dark .bg-red-50 {
+  background-color: rgb(220 38 38 / 0.14);
+}
+
+.dark .border-red-200 {
+  border-color: #7f1d1d;
+}
+
+.dark .border-red-400 {
+  border-color: #f87171;
+}
+
+.dark .text-red-800 {
+  color: #fecaca;
+}
+
+.dark .bg-amber-50 {
+  background-color: rgb(217 119 6 / 0.16);
+}
+
+.dark .border-amber-200 {
+  border-color: #78350f;
+}
+
+.dark .text-amber-800 {
+  color: #fde68a;
 }

@@ -41,9 +41,9 @@ export default function ImageToPdf() {
 
           <div className="grid grid-cols-2 gap-3 md:grid-cols-4">
             {files.map((f, i) => (
-              <div key={f.name + i} className="rounded-xl border border-zinc-800 bg-zinc-900 p-2">
+              <div key={f.name + i} className="rounded-xl border border-zinc-200 bg-white p-2">
                 <img src={urls[i]} alt={f.name} className="aspect-square w-full rounded-lg object-cover" />
-                <p className="mt-1 truncate text-center text-xs text-zinc-400" title={f.name}>{f.name}</p>
+                <p className="mt-1 truncate text-center text-xs text-zinc-500" title={f.name}>{f.name}</p>
               </div>
             ))}
           </div>

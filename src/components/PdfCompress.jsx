@@ -66,13 +66,13 @@ export default function PdfCompress() {
               <Card>
                 <label className="flex items-center justify-between text-sm font-medium">
                   Kualitas Gambar di PDF
-                  <span className="rounded bg-zinc-800 px-2 py-0.5 text-amber-400">{quality}</span>
+                  <span className="rounded bg-zinc-100 px-2 py-0.5 text-red-600">{quality}</span>
                 </label>
                 <input type="range" min={10} max={80} value={quality} onChange={(e) => setQuality(+e.target.value)} className="mt-3 w-full accent-red-500" />
               </Card>
               <Card>
                 <label className="text-sm font-medium">Tingkat Kejelasan / Ketajaman</label>
-                <select value={sharp} onChange={(e) => setSharp(e.target.value)} className="mt-3 w-full rounded-lg border border-zinc-700 bg-zinc-800 px-3 py-2 text-sm">
+                <select value={sharp} onChange={(e) => setSharp(e.target.value)} className="mt-3 w-full rounded-lg border border-zinc-300 bg-zinc-100 px-3 py-2 text-sm">
                   {Object.keys(SHARPNESS).map((k) => <option key={k}>{k}</option>)}
                 </select>
               </Card>
