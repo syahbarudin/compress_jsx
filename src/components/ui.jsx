@@ -9,7 +9,7 @@ export function PageTitle({ title, subtitle }) {
   );
 }
 
-export function Dropzone({ accept, multiple = false, label, onFiles }) {
+export function Dropzone({ accept, multiple = false, label, onFiles, disabled = false }) {
   const inputRef = useRef(null);
   const [over, setOver] = useState(false);
 
@@ -20,18 +20,21 @@ export function Dropzone({ accept, multiple = false, label, onFiles }) {
 
   return (
     <div
-      onClick={() => inputRef.current?.click()}
+      onClick={() => !disabled && inputRef.current?.click()}
       onDragOver={(e) => {
         e.preventDefault();
-        setOver(true);
+        if (!disabled) setOver(true);
       }}
       onDragLeave={() => setOver(false)}
       onDrop={(e) => {
         e.preventDefault();
         setOver(false);
-        handle(e.dataTransfer.files);
+        if (!disabled) handle(e.dataTransfer.files);
       }}
-      className={`flex cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 py-12 text-center transition ${
+      aria-disabled={disabled}
+      className={`flex flex-col items-center justify-center rounded-2xl border-2 border-dashed px-6 py-12 text-center transition ${
+        disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer"
+      } ${
         over ? "border-red-400 bg-red-50" : "border-zinc-300 bg-white hover:border-red-300 hover:bg-red-50/40"
       }`}
     >
@@ -42,6 +45,7 @@ export function Dropzone({ accept, multiple = false, label, onFiles }) {
         type="file"
         accept={accept}
         multiple={multiple}
+        disabled={disabled}
         className="hidden"
         onChange={(e) => {
           handle(e.target.files);

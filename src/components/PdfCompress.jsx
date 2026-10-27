@@ -42,7 +42,7 @@ export default function PdfCompress() {
   return (
     <div>
       <PageTitle title="📄 Kompres Berkas PDF" subtitle="Optimalkan aliran teks atau pangkas ukuran PDF hasil scan/convert gambar." />
-      <Dropzone accept="application/pdf" label="Unggah Berkas PDF" onFiles={([f]) => { setFile(f); setResult(null); setError(""); }} />
+      <Dropzone accept="application/pdf" label="Unggah Berkas PDF" onFiles={([f]) => { setFile(f); setResult(null); setError(""); }} disabled={!!busy} />
 
       {file && (
         <div className="mt-6 space-y-5">

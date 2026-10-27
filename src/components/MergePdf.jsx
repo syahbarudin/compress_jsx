@@ -23,7 +23,7 @@ export default function MergePdf() {
   };
 
   const move = (from, to) => {
-    if (to < 0 || to >= items.length || from === to) return;
+    if (busy || from < 0 || from >= items.length || to < 0 || to >= items.length || from === to) return;
     setItems((prev) => {
       const next = [...prev];
       const [m] = next.splice(from, 1);
@@ -70,7 +70,7 @@ export default function MergePdf() {
   return (
     <div>
       <PageTitle title="🧩 Gabung PDF (Merge)" subtitle="Susun urutan berkas dengan drag & drop, lalu gabungkan jadi satu PDF." />
-      <Dropzone accept="application/pdf" multiple label="Pilih berkas PDF" onFiles={addFiles} />
+      <Dropzone accept="application/pdf" multiple label="Pilih berkas PDF" onFiles={addFiles} disabled={!!busy} />
 
       {items.length === 0 ? (
         <div className="mt-6"><Notice>Unggah 2 atau lebih berkas PDF untuk mulai menyusun urutan.</Notice></div>
@@ -83,7 +83,7 @@ export default function MergePdf() {
               {items.map((it, idx) => (
                 <div
                   key={it.id}
-                  draggable
+                  draggable={!busy}
                   onDragStart={() => setDragId(it.id)}
                   onDragOver={(e) => e.preventDefault()}
                   onDrop={() => {
@@ -102,9 +102,9 @@ export default function MergePdf() {
                   <p className="mt-2 truncate text-center text-xs font-bold" title={it.file.name}>{it.file.name}</p>
                   <p className="text-center text-[11px] font-bold text-red-500">Urutan #{idx + 1}</p>
                   <div className="mt-1 flex items-center justify-center gap-1">
-                    <button onClick={() => move(idx, idx - 1)} disabled={idx === 0} className="rounded bg-zinc-100 px-2 py-0.5 text-xs hover:bg-zinc-200 disabled:opacity-30">←</button>
-                    <button onClick={() => move(idx, idx + 1)} disabled={idx === items.length - 1} className="rounded bg-zinc-100 px-2 py-0.5 text-xs hover:bg-zinc-200 disabled:opacity-30">→</button>
-                    <button onClick={() => remove(it.id)} className="rounded bg-zinc-100 px-2 py-0.5 text-xs text-red-600 hover:bg-zinc-200">✕</button>
+                    <button onClick={() => move(idx, idx - 1)} disabled={!!busy || idx === 0} className="rounded bg-zinc-100 px-2 py-0.5 text-xs hover:bg-zinc-200 disabled:opacity-30">←</button>
+                    <button onClick={() => move(idx, idx + 1)} disabled={!!busy || idx === items.length - 1} className="rounded bg-zinc-100 px-2 py-0.5 text-xs hover:bg-zinc-200 disabled:opacity-30">→</button>
+                    <button onClick={() => remove(it.id)} disabled={!!busy} className="rounded bg-zinc-100 px-2 py-0.5 text-xs text-red-600 hover:bg-zinc-200 disabled:opacity-30">✕</button>
                   </div>
                 </div>
               ))}

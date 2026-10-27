@@ -31,6 +31,7 @@ export default function ImageToPdf() {
       <Dropzone
         accept="image/jpeg,image/png,image/webp"
         multiple
+        disabled={busy}
         label="Unggah Berkas Gambar (bisa pilih banyak sekaligus)"
         onFiles={(f) => { setFiles(f); setResult(null); setError(""); }}
       />

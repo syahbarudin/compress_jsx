@@ -27,6 +27,7 @@ export default function WordToPdf() {
       <Dropzone
         accept=".docx,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
         label="Unggah Berkas Word (.docx)"
+        disabled={busy}
         onFiles={([f]) => { setFile(f); setResult(null); setError(""); }}
       />
 

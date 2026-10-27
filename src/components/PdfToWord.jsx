@@ -24,7 +24,7 @@ export default function PdfToWord() {
   return (
     <div>
       <PageTitle title="📄➔📑 Ubah Dokumen PDF ke Word" subtitle="Ekstrak teks PDF menjadi dokumen Microsoft Word (.docx) yang dapat disunting." />
-      <Dropzone accept="application/pdf" label="Unggah Berkas PDF" onFiles={([f]) => { setFile(f); setResult(null); setError(""); }} />
+      <Dropzone accept="application/pdf" label="Unggah Berkas PDF" onFiles={([f]) => { setFile(f); setResult(null); setError(""); }} disabled={busy} />
 
       {file && (
         <div className="mt-6 space-y-4">

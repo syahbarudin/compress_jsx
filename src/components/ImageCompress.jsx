@@ -14,6 +14,8 @@ export default function ImageCompress() {
   // kompres ulang (debounce) setiap slider/berkas berubah
   useEffect(() => {
     if (!file) return;
+    setResult(null);
+    setError("");
     let cancelled = false;
     let url = null;
     const t = setTimeout(async () => {
